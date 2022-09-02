@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfserving-classifier
+spec:
+  selector:
+    matchLabels:
+      app: tfserving-classifier
+  template:
+    metadata:
+      labels:
+        app: tfserving-classifier
+    spec:
+      containers:
+      - name: tfserving-classifier
+        image: tfserving_classifier:v01
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8501

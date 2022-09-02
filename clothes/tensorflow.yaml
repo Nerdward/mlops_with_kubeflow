@@ -1,0 +1,16 @@
+apiVersion: "serving.kserve.io/v1beta1"
+kind: "InferenceService"
+metadata:
+  name: "clothes"
+spec:
+  predictor:
+    tensorflow:
+      storageUri: "http://10.182.0.4:8000/artifacts.tgz"
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "0.5"
+        limits:
+          memory: "512Mi"
+          cpu: "1.0"
+

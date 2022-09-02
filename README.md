@@ -38,3 +38,47 @@
 1. Install [Kserve](https://kserve.github.io/website/master/get_started/)  standalone (requires kind and kubectl)
 
 2. Run your first [InferenceService](https://kserve.github.io/website/master/get_started/first_isvc/)
+
+kubectl get svc istio-ingressgateway -n istio-system
+
+kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80
+
+
+```bash
+INGRESS_HOST="localhost"
+INGRESS_PORT="8080"
+DOMAIN="example.com"
+NAMESPACE="kserve-test"
+SERVICE="sklearn-iris"
+
+SERVICE_HOSTNAME="${SERVICE}.${NAMESPACE}.${DOMAIN}"
+
+curl -v -H "Host: ${SERVICE_HOSTNAME}" http://${INGRESS_HOST}:${INGRESS_PORT}/v1/models/sklearn-iris:predict -d @./iris-input.json
+```
+
+# Running tensorflow model in Kserve
+Download the model
+  ```bash
+  wget https://github.com/alexeygrigorev/mlbookcamp-code/releases/download/chapter7-model/xception_v4_large_08_0.894.h5
+  ```
+
+Convert it to *saved_model*:
+```python
+python convert.py
+```
+Instead of using an s3 bucket or Google cloud storage
+```bash
+cd clothing-model/
+tar -cvf artifacts.tar 1/
+gzip < artifacts.tar > artifacts.tgz
+```
+Host the file on your local machine
+```python
+python -m http.server
+```
+```bash
+kubectl apply -f tensorflow.yaml 
+```
+
+curl -v -H "Host: clothes.default.example.com" http://${INGRESS_HOST}:${INGRESS_PORT}/v1/models/clothes:predict -d $INPUT_PATH
+
