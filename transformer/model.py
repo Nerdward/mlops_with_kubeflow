@@ -35,7 +35,7 @@ class ImageTransformer(kserve.Model):
 
     def postprocess(self, inputs: Dict) -> Dict:
         result = []
-        for prediction in inputs['instances']:
+        for prediction in inputs['predictions']:
             output = dict(zip(self.classes, prediction)) 
             result.append(output)
 

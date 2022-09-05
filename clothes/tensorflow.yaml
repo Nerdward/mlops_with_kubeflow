@@ -3,6 +3,10 @@ kind: "InferenceService"
 metadata:
   name: "clothes"
 spec:
+  transformer:
+    containers:
+      - image: "nerdward/image-transformer:v02"
+        name: nerdward-container
   predictor:
     tensorflow:
       storageUri: "http://10.182.0.4:8000/artifacts.tgz"
