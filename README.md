@@ -82,3 +82,8 @@ kubectl apply -f tensorflow.yaml
 
 curl -v -H "Host: clothes.default.example.com" http://${INGRESS_HOST}:${INGRESS_PORT}/v1/models/clothes:predict -d $INPUT_PATH
 
+docker build -t nerdward/image-transformer:v02 .
+docker build -t <hub-user>/<repo-name>[:<tag>]
+
+docker push nerdward/image-transformer:v02
+docker push <hub-user>/<repo-name>:<tag>
