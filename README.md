@@ -28,6 +28,7 @@
 * ```python
   python predict.py
   ```
+  `http://{HOST}:{PORT}/v1/models/{MODEL_NAME}:{VERB}`
 *To load images from your local into the cluster*
 * ```bash
   kind load docker-image tfserving_classifier:v01
