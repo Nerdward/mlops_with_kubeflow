@@ -39,6 +39,9 @@
 * ```bash
   kubectl apply -f kubeconfig/service.yaml
   ```
+* ```bash
+  kubectl port-forward svc/tfserving-classifier 8080:80
+  ```
 
 # Kserve
 ## Setup
