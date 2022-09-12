@@ -49,10 +49,12 @@
 
 2. Run your first [InferenceService](https://kserve.github.io/website/master/get_started/first_isvc/)
 
+```bash
 kubectl get svc istio-ingressgateway -n istio-system
-
+```
+```bash
 kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80
-
+```
 
 ```bash
 INGRESS_HOST="localhost"
