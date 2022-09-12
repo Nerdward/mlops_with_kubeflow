@@ -111,7 +111,7 @@ curl -v -H "Host: clothes.default.example.com" http://${INGRESS_HOST}:${INGRESS_
 
 3. Create the InferenceService and Apply.
   ```bash
-  kubectl apply -f transformer.yaml
+  kubectl apply -f tensorflow.yaml
   ```
 4. Run a prediction.
 
